@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 8 English: Recount Text Interactive Learning Media</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .slide-transition {
+            animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-subtle {
+            animation: pulseGlow 2s infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 via-sky-50 to-emerald-50 min-h-screen text-slate-800 flex flex-col justify-between p-3 sm:p-6">
+
+    <header class="max-w-5xl w-full mx-auto bg-white/90 backdrop-blur-md shadow-md border border-indigo-100 py-3 px-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-3 mb-4">
+        <div class="flex items-center space-x-3">
+            <div class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-3 rounded-xl shadow-md font-extrabold text-xl">
+                📖
+            </div>
+            <div>
+                <h1 class="text-lg sm:text-xl font-extrabold text-slate-900">Recount Text Explorer</h1>
+                <p class="text-xs text-slate-500">Grade 8 SMP • Personal Experience Masterclass</p>
+            </div>
+        </div>
+        <!-- Progress Indicator & Slide Nav -->
+        <div class="flex items-center gap-2">
+            <div class="bg-indigo-50 border border-indigo-200 text-indigo-700 px-4 py-1.5 rounded-xl font-bold text-sm shadow-sm">
+                Slide <span id="current-slide-num" class="text-indigo-900 font-extrabold">1</span> / 5
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto my-auto flex-grow flex flex-col justify-center">
+
+        <!-- ================= SLIDE 1: Title & Learning Objectives ================= -->
+        <section id="slide-1" class="slide-transition bg-white rounded-3xl shadow-2xl border border-indigo-100 p-6 sm:p-10 text-center">
+            <div class="inline-block bg-indigo-100 text-indigo-700 p-4 rounded-3xl text-4xl mb-4 shadow-inner">
+                🎯
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black text-slate-900 mb-3">Mastering Recount Text</h2>
+            <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base mb-8 leading-relaxed">
+                Explore exciting personal experiences, discover past tense verbs, highlight story structures, and test your reading comprehension!
+            </p>
+
+            <div class="bg-indigo-50/70 border-2 border-indigo-200 p-6 rounded-2xl max-w-2xl mx-auto text-left mb-8 shadow-sm">
+                <h3 class="font-extrabold text-indigo-900 text-base sm:text-lg mb-3 flex items-center gap-2">
+                    <span class="bg-indigo-600 text-white text-xs px-2.5 py-1 rounded-lg">Target Pembelajaran</span>
+                </h3>
+                <ul class="space-y-2 text-slate-700 text-sm sm:text-base">
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">✓</span>
+                        <span>Siswa mampu mengidentifikasi <b>informasi utama</b> dari teks recount pribadi secara mandiri.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">✓</span>
+                        <span>Siswa mampu menemukan <b>detail spesifik</b> (waktu, tempat, tokoh, kejadian) dalam teks.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-indigo-600 font-bold">✓</span>
+                        <span>Siswa mampu mengenali struktur teks (Orientation, Events, Re-orientation) serta penggunaan <b>Past Tense</b>.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <button onclick="goToSlide(2)" class="w-full max-w-md mx-auto bg-gradient-to-r from-indigo-600 via-blue-600 to-emerald-600 text-white font-extrabold text-lg py-4 px-8 rounded-2xl shadow-xl hover:shadow-indigo-300 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                Start Learning Journey 🚀
+            </button>
+        </section>
+
+        <!-- ================= SLIDE 2: Warm-up Game (Past Tense Verbs) ================= -->
+        <section id="slide-2" class="slide-transition hidden bg-white rounded-3xl shadow-2xl border border-indigo-100 p-6 sm:p-10">
+            <div class="flex justify-between items-center border-b pb-4 mb-6">
+                <div>
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Warm-up Game</span>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">Past Tense Verb Hunter</h2>
+                </div>
+                <div class="text-right">
+                    <span class="text-xs text-slate-400 block">Score</span>
+                    <span id="warmup-score" class="font-black text-indigo-600 text-lg sm:text-xl">0</span> pts
+                </div>
+            </div>
+
+            <p class="text-slate-600 text-sm sm:text-base mb-6">
+                Recount text tells about the past. Click on the <b>Verb 2 (Past Tense)</b> words that frequently appear in recount texts! Avoid Present Tense verbs.
+            </p>
+
+            <div id="word-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <!-- Populated via JS -->
+            </div>
+
+            <div id="warmup-feedback" class="bg-indigo-50 border border-indigo-200 text-indigo-900 p-4 rounded-2xl mb-6 text-sm font-medium text-center">
+                👉 Click words to test if they are Past Tense (Verb 2)!
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button onclick="goToSlide(1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl transition-all">
+                    ⬅️ Back
+                </button>
+                <button onclick="goToSlide(3)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg shadow-indigo-200 transition-all">
+                    Next: Story & Structure ➔
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 3: Sample Recount Text & Structure Highlighter ================= -->
+        <section id="slide-3" class="slide-transition hidden bg-white rounded-3xl shadow-2xl border border-indigo-100 p-6 sm:p-10">
+            <div class="flex justify-between items-center border-b pb-4 mb-6">
+                <div>
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Reading Section</span>
+                    <h2 class="text-xl sm:text-2xl font-black text-slate-900 mt-1">My First Time Cooking</h2>
+                </div>
+                <span class="text-xs bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold px-3 py-1.5 rounded-xl">
+                    Interactive Highlighter ✨
+                </span>
+            </div>
+
+            <p class="text-slate-600 text-xs sm:text-sm mb-4">
+                Click the structure buttons below to highlight and analyze the parts of the Recount Text!
+            </p>
+
+            <!-- Highlighter Toggle Buttons -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="highlightStructure('orientation')" id="btn-ori" class="bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border-2 border-amber-300">
+                    🟡 1. Orientation (Who, When, Where)
+                </button>
+                <button onclick="highlightStructure('events')" id="btn-eve" class="bg-sky-100 hover:bg-sky-200 text-sky-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border-2 border-sky-300">
+                    🔵 2. Events (Sequence of Actions)
+                </button>
+                <button onclick="highlightStructure('reorientation')" id="btn-reo" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border-2 border-emerald-300">
+                    🟢 3. Re-orientation (Personal Comment)
+                </button>
+                <button onclick="highlightStructure('all')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition-all">
+                    Reset View
+                </button>
+            </div>
+
+            <!-- Recount Text Box with Highlighting Classes -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 mb-6 font-serif text-slate-800 text-sm sm:text-base leading-relaxed space-y-4">
+                <p id="part-ori" class="p-3 rounded-xl transition-all border-l-4 border-amber-400 bg-amber-50/50">
+                    <b>Last Sunday morning</b>, I decided to cook fried rice for my family because my mother was feeling a bit unwell. I woke up early at 6:00 AM and prepared all the ingredients in the kitchen.
+                </p>
+                <p id="part-eve" class="p-3 rounded-xl transition-all border-l-4 border-sky-400 bg-sky-50/50">
+                    First, I chopped some garlic, shallots, and red chili on the cutting board. Next, I poured cooking oil into the heated frying pan and cracked an egg into it. After that, I added a plate of cold rice and stirred it thoroughly with soy sauce and salt. The wonderful aroma filled the entire kitchen.
+                </p>
+                <p id="part-reo" class="p-3 rounded-xl transition-all border-l-4 border-emerald-400 bg-emerald-50/50">
+                    Finally, I served the special fried rice on a beautiful plate. My father and sister tasted it and gave me two thumbs up! I felt extremely happy and proud of my first cooking experience.
+                </p>
+            </div>
+
+            <div id="structure-explanation" class="bg-indigo-50 border border-indigo-200 text-indigo-900 p-4 rounded-2xl mb-6 text-xs sm:text-sm font-medium">
+                💡 Click any structure button above to understand its function in a Recount Text!
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button onclick="goToSlide(2)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl transition-all">
+                    ⬅️ Back
+                </button>
+                <button onclick="goToSlide(4)" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg shadow-indigo-200 transition-all">
+                    Next: Independent Practice ➔
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 4: Independent Practice (Comprehension Quiz) ================= -->
+        <section id="slide-4" class="slide-transition hidden bg-white rounded-3xl shadow-2xl border border-indigo-100 p-6 sm:p-10">
+            <div class="flex justify-between items-center border-b pb-4 mb-6">
+                <div>
+                    <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md uppercase tracking-wider">Independent Practice</span>
+                    <h2 id="quiz-question-title" class="text-lg sm:text-xl font-black text-slate-900 mt-1">Question 1 of 4</h2>
+                </div>
+                <div class="text-right">
+                    <span class="text-xs text-slate-400 block">Quiz Score</span>
+                    <span id="quiz-score-display" class="font-black text-indigo-600 text-lg">0</span> / 4
+                </div>
+            </div>
+
+            <!-- Question Box -->
+            <div class="mb-6">
+                <h3 id="quiz-text-prompt" class="text-base sm:text-lg font-extrabold text-slate-900 mb-4">
+                    <!-- Loaded via JS -->
+                </h3>
+                <div id="quiz-options-box" class="space-y-3">
+                    <!-- Loaded via JS -->
+                </div>
+            </div>
+
+            <!-- Feedback Alert -->
+            <div id="quiz-feedback-box" class="hidden rounded-2xl p-4 mb-6 transition-all text-sm">
+                <div id="quiz-feedback-title" class="font-bold mb-1"></div>
+                <div id="quiz-feedback-desc" class="text-xs sm:text-sm"></div>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button onclick="goToSlide(3)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-6 py-3 rounded-xl transition-all">
+                    ⬅️ Back
+                </button>
+                <button id="btn-next-question" onclick="nextQuizQuestion()" class="hidden bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg shadow-indigo-200 transition-all">
+                    Next Question ➔
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= SLIDE 5: Reflection & Summary Report ================= -->
+        <section id="slide-5" class="slide-transition hidden bg-white rounded-3xl shadow-2xl border border-indigo-100 p-6 sm:p-10 text-center">
+            <div class="inline-block bg-amber-100 text-amber-600 p-5 rounded-3xl text-5xl mb-4 shadow-inner">
+                🏆
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-black text-slate-900 mb-2">Learning Session Completed!</h2>
+            <p class="text-slate-600 text-sm sm:text-base mb-6">Great job exploring Recount Texts and practicing your reading comprehension skills!</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto mb-8">
+                <div class="bg-indigo-50 border border-indigo-100 p-5 rounded-2xl text-center">
+                    <span class="text-xs uppercase font-bold text-indigo-500 block mb-1">Warm-up Score</span>
+                    <span id="final-warmup-score" class="text-3xl font-black text-indigo-600">0</span> <span class="text-xs text-slate-500">pts</span>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 p-5 rounded-2xl text-center">
+                    <span class="text-xs uppercase font-bold text-emerald-500 block mb-1">Quiz Score</span>
+                    <span id="final-quiz-score" class="text-3xl font-black text-emerald-600">0</span> <span class="text-xs text-slate-500">/ 4</span>
+                </div>
+            </div>
+
+            <!-- Teacher Note / Reflection Prompt -->
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl max-w-xl mx-auto text-left mb-8">
+                <h4 class="font-bold text-slate-800 text-sm mb-2">📝 Student Reflection & Checklist:</h4>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    "I can now identify main ideas, specific details, and past tense verbs in personal recount texts. I am ready to write my own personal experience story!"
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-3">
+                <button onclick="resetAllMedia()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold px-8 py-3.5 rounded-2xl shadow-lg shadow-indigo-200 transition-all">
+                    🔄 Restart Media
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-3 text-xs text-slate-500 border-t border-slate-200/60 mt-4">
+        Interactive Media Pembelajaran Bahasa Inggris • Grade 8 SMP • Fully Responsive for Laptop, PID & Mobile
+    </footer>
+
+    <script>
+        // Global State Variables
+        let currentSlide = 1;
+        let warmupScore = 0;
+        let quizScore = 0;
+        let currentQuizIdx = 0;
+        let answeredCurrentQuiz = false;
+
+        // Slide Switcher Function
+        function goToSlide(slideNum) {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`slide-${i}`).classList.add('hidden');
+            }
+            document.getElementById(`slide-${slideNum}`).classList.remove('hidden');
+            document.getElementById('current-slide-num').innerText = slideNum;
+            currentSlide = slideNum;
+
+            if (slideNum === 2) {
+                renderWarmupGame();
+            } else if (slideNum === 4 && currentQuizIdx === 0 && !answeredCurrentQuiz) {
+                loadQuizQuestion();
+            } else if (slideNum === 5) {
+                document.getElementById('final-warmup-score').innerText = warmupScore;
+                document.getElementById('final-quiz-score').innerText = quizScore;
+            }
+        }
+
+        // --- SLIDE 2: WARM-UP GAME LOGIC ---
+        const warmupWords = [
+            { word: "Decided", isVerb2: true, desc: "Correct! 'Decided' is Verb 2 (Past Tense)." },
+            { word: "Cook", isVerb2: false, desc: "Incorrect! 'Cook' is Verb 1 (Present Tense)." },
+            { word: "Woke", isVerb2: true, desc: "Correct! 'Woke' is the past form of Wake." },
+            { word: "Chopped", isVerb2: true, desc: "Correct! 'Chopped' is Verb 2." },
+            { word: "Running", isVerb2: false, desc: "Incorrect! 'Running' is Present Participle." },
+            { word: "Stirred", isVerb2: true, desc: "Correct! 'Stirred' is Verb 2." },
+            { word: "Eat", isVerb2: false, desc: "Incorrect! 'Eat' is Verb 1." },
+            { word: "Felt", isVerb2: true, desc: "Correct! 'Felt' is the past form of Feel." }
+        ];
+        let clickedWords = [];
+
+        function renderWarmupGame() {
+            const grid = document.getElementById('word-grid');
+            grid.innerHTML = '';
+            warmupWords.forEach((item, index) => {
+                const btn = document.createElement('button');
+                const isClicked = clickedWords.includes(index);
+                
+                if (isClicked) {
+                    btn.className = item.isVerb2 
+                        ? "bg-emerald-100 border-2 border-emerald-400 text-emerald-900 font-bold p-4 rounded-xl text-center opacity-70 cursor-not-allowed"
+                        : "bg-rose-100 border-2 border-rose-400 text-rose-900 font-bold p-4 rounded-xl text-center opacity-70 cursor-not-allowed";
+                    btn.innerText = item.word + (item.isVerb2 ? " ✓ (V2)" : " ✗ (V1)");
+                    btn.disabled = true;
+                } else {
+                    btn.className = "bg-white hover:bg-indigo-50 border-2 border-indigo-100 hover:border-indigo-300 font-bold text-slate-800 p-4 rounded-xl shadow-sm transition-all text-center";
+                    btn.innerText = item.word;
+                    btn.onclick = () => checkWarmupWord(index);
+                }
+                grid.appendChild(btn);
+            });
+        }
+
+        function checkWarmupWord(index) {
+            clickedWords.push(index);
+            const item = warmupWords[index];
+            const feedback = document.getElementById('warmup-feedback');
+            
+            if (item.isVerb2) {
+                warmupScore += 15;
+                feedback.className = "bg-emerald-50 border border-emerald-200 text-emerald-900 p-4 rounded-2xl mb-6 text-sm font-bold text-center";
+            } else {
+                feedback.className = "bg-rose-50 border border-rose-200 text-rose-900 p-4 rounded-2xl mb-6 text-sm font-bold text-center";
+            }
+            feedback.innerText = item.desc;
+            document.getElementById('warmup-score').innerText = warmupScore;
+            renderWarmupGame();
+        }
+
+        // --- SLIDE 3: STRUCTURE HIGHLIGHTER LOGIC ---
+        function highlightStructure(part) {
+            const ori = document.getElementById('part-ori');
+            const eve = document.getElementById('part-eve');
+            const reo = document.getElementById('part-reo');
+            const exp = document.getElementById('structure-explanation');
+
+            // Reset borders
+            ori.className = "p-3 rounded-xl transition-all border-l-4 border-slate-300 bg-slate-50";
+            eve.className = "p-3 rounded-xl transition-all border-l-4 border-slate-300 bg-slate-50";
+            reo.className = "p-3 rounded-xl transition-all border-l-4 border-slate-300 bg-slate-50";
+
+            if (part === 'orientation' || part === 'all') {
+                ori.className = "p-3 rounded-xl transition-all border-l-4 border-amber-500 bg-amber-50 shadow-sm";
+            }
+            if (part === 'events' || part === 'all') {
+                eve.className = "p-3 rounded-xl transition-all border-l-4 border-sky-500 bg-sky-50 shadow-sm";
+            }
+            if (part === 'reorientation' || part === 'all') {
+                reo.className = "p-3 rounded-xl transition-all border-l-4 border-emerald-500 bg-emerald-50 shadow-sm";
+            }
+
+            if (part === 'orientation') {
+                exp.className = "bg-amber-50 border border-amber-200 text-amber-900 p-4 rounded-2xl mb-6 text-xs sm:text-sm font-medium";
+                exp.innerHTML = "🟡 <b>Orientation:</b> Introduces the participants, setting of time ('Last Sunday morning'), and place ('kitchen') to give background information.";
+            } else if (part === 'events') {
+                exp.className = "bg-sky-50 border border-sky-200 text-sky-900 p-4 rounded-2xl mb-6 text-xs sm:text-sm font-medium";
+                exp.innerHTML = "🔵 <b>Events:</b> A series of chronological actions and steps taken by the writer (chopping garlic, frying rice, stirring).";
+            } else if (part === 'reorientation') {
+                exp.className = "bg-emerald-50 border border-emerald-200 text-emerald-900 p-4 rounded-2xl mb-6 text-xs sm:text-sm font-medium";
+                exp.innerHTML = "🟢 <b>Re-orientation:</b> Personal comment or conclusion about the experience (feeling happy and proud).";
+            } else {
+                exp.className = "bg-indigo-50 border border-indigo-200 text-indigo-900 p-4 rounded-2xl mb-6 text-xs sm:text-sm font-medium";
+                exp.innerHTML = "💡 All structure parts are highlighted simultaneously for comprehensive analysis.";
+            }
+        }
+
+        // --- SLIDE 4: INDEPENDENT PRACTICE QUIZ DATA ---
+        const quizQuestions = [
+            {
+                title: "Question 1: Main Topic Identification",
+                question: "What is the main topic of the recount text 'My First Time Cooking'?",
+                options: [
+                    { text: "A mother cooking fried chicken for dinner", correct: false, explanation: "Incorrect. The writer cooked fried rice, not chicken." },
+                    { text: "The writer's first experience cooking fried rice for family", correct: true, explanation: "Correct! The text details the writer cooking fried rice because mother was unwell." },
+                    { text: "A restaurant recipe guide for professional chefs", correct: false, explanation: "Incorrect. It is a personal experience story." }
+                ]
+            },
+            {
+                title: "Question 2: Specific Detail (Time & Setting)",
+                question: "When did the cooking event take place according to the Orientation?",
+                options: [
+                    { text: "Last Sunday morning", correct: true, explanation: "Correct! The text begins with 'Last Sunday morning'." },
+                    { text: "Yesterday afternoon after school", correct: false, explanation: "Incorrect." },
+                    { text: "Two weeks ago during holidays", correct: false, explanation: "Incorrect." }
+                ]
+            },
+            {
+                title: "Question 3: Specific Detail (Actions / Events)",
+                question: "What ingredients were chopped on the cutting board during the events?",
+                options: [
+                    { text: "Apples, bananas, and strawberries", correct: false, explanation: "Incorrect." },
+                    { text: "Garlic, shallots, and red chili", correct: true, explanation: "Correct! The text states: 'First, I chopped some garlic, shallots, and red chili.'" },
+                    { text: "Carrots and potatoes for soup", correct: false, explanation: "Incorrect." }
+                ]
+            },
+            {
+                title: "Question 4: Re-orientation & Conclusion",
+                question: "How did the writer feel at the end of the experience?",
+                options: [
+                    { text: "Extremely happy and proud of the first cooking experience", correct: true, explanation: "Correct! The text states the writer felt extremely happy and proud." },
+                    { text: "Sad and disappointed because nobody liked it", correct: false, explanation: "Incorrect. Family gave two thumbs up." },
+                    { text: "Tired and refusing to cook ever again", correct: false, explanation: "Incorrect." }
+                ]
+            }
+        ];
+
+        function loadQuizQuestion() {
+            answeredCurrentQuiz = false;
+            const q = quizQuestions[currentQuizIdx];
+
+            document.getElementById('quiz-question-title').innerText = `Question ${currentQuizIdx + 1} of 4`;
+            document.getElementById('quiz-text-prompt').innerText = q.question;
+            document.getElementById('quiz-score-display').innerText = quizScore;
+
+            const optsBox = document.getElementById('quiz-options-box');
+            optsBox.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-xl border border-slate-200 bg-white hover:bg-indigo-50 hover:border-indigo-300 font-medium text-slate-700 transition-all shadow-sm flex items-start space-x-3";
+                btn.innerHTML = `<span class="bg-slate-100 text-slate-600 font-bold px-2.5 py-0.5 rounded-md text-xs mt-0.5">${String.fromCharCode(65 + idx)}</span> <span class="flex-grow">${opt.text}</span>`;
+                btn.onclick = () => selectQuizOption(idx, btn);
+                optsBox.appendChild(btn);
+            });
+
+            document.getElementById('quiz-feedback-box').classList.add('hidden');
+            document.getElementById('btn-next-question').classList.add('hidden');
+        }
+
+        function selectQuizOption(selectedIndex, selectedButton) {
+            if (answeredCurrentQuiz) return;
+            answeredCurrentQuiz = true;
+
+            const q = quizQuestions[currentQuizIdx];
+            const allBtns = document.getElementById('quiz-options-box').getElementsByTagName('button');
+            const isCorrect = q.options[selectedIndex].correct;
+
+            if (isCorrect) {
+                quizScore += 1;
+                selectedButton.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-semibold text-emerald-900 transition-all shadow-sm flex items-start space-x-3";
+            } else {
+                selectedButton.className = "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 font-semibold text-rose-900 transition-all shadow-sm flex items-start space-x-3";
+                q.options.forEach((opt, idx) => {
+                    if (opt.correct) {
+                        allBtns[idx].className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 font-semibold text-emerald-900 transition-all shadow-sm flex items-start space-x-3";
+                    }
+                });
+            }
+
+            for (let b of allBtns) {
+                b.disabled = true;
+                b.classList.add('cursor-not-allowed', 'opacity-80');
+            }
+
+            const feedbackBox = document.getElementById('quiz-feedback-box');
+            const feedbackTitle = document.getElementById('quiz-feedback-title');
+            const feedbackDesc = document.getElementById('quiz-feedback-desc');
+
+            feedbackBox.classList.remove('hidden', 'bg-emerald-50', 'bg-rose-50', 'border-emerald-200', 'border-rose-200');
+            if (isCorrect) {
+                feedbackBox.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-900');
+                feedbackTitle.innerText = "✨ Correct Answer! Excellent reading detective skill!";
+            } else {
+                feedbackBox.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-900');
+                feedbackTitle.innerText = "💡 Incorrect Answer. Review the text explanation below:";
+            }
+            feedbackDesc.innerText = q.options[selectedIndex].explanation;
+
+            document.getElementById('quiz-score-display').innerText = quizScore;
+            document.getElementById('btn-next-question').classList.remove('hidden');
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIdx++;
+            if (currentQuizIdx < quizQuestions.length) {
+                loadQuizQuestion();
+            } else {
+                goToSlide(5);
+            }
+        }
+
+        function resetAllMedia() {
+            currentSlide = 1;
+            warmupScore = 0;
+            quizScore = 0;
+            currentQuizIdx = 0;
+            clickedWords = [];
+            answeredCurrentQuiz = false;
+            goToSlide(1);
+        }
+    </script>
+</body>
+</html>
